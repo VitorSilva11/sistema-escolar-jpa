@@ -10,67 +10,13 @@ import br.com.treinamento.model.Empresa;
 import br.com.treinamento.model.Professor;
 import br.com.treinamento.model.Unidade;
 
-public class UnidadeDao {
+public class UnidadeDao extends DAO<Unidade>{
 	
 	private EntityManager em;
 	
 	public UnidadeDao(EntityManager em) {
+		super(em);
 		this.em = em;
-	}
-	
-	
-	public void save(Unidade unidade) {
-		try {
-			
-			em.getTransaction().begin();
-			
-			if(unidade.getId() != null) {
-				em.persist(unidade);
-				System.out.println("Alterado com Sucesso!");
-			}
-			else {
-				em.persist(unidade);
-				System.out.println("Salvo Com Sucesso!");
-			}
-
-			
-			em.getTransaction().commit();
-		}catch (Exception e) {
-			System.out.println("Erro ao salvar");
-		}
-	}
-	
-	public void remove(Unidade unidade) {
-		try {
-			
-			em.getTransaction().begin();
-			
-			em.merge(unidade);
-			em.persist(unidade);
-			
-			em.getTransaction().commit();
-		}catch (Exception e) {
-			System.out.println("Erro ao remover");
-		}
-		
-	}
-	
-	
-	public Unidade update(Long id) {
-		
-		return em.find(Unidade.class, id);
-		
-	}
-	
-	
-	public List<Unidade> findAll(){
-		String jpql = "SELECT u FROM Unidade u";
-		return em.createQuery(jpql, Unidade.class).getResultList();
-	}
-	
-	public Unidade findById(Long id) {
-		String jpql = "SELECT u FROM Unidade u WHERE u.id = :id";
-		return em.createQuery(jpql, Unidade.class).setParameter("id", id).getSingleResult();
 	}
 	
 	

@@ -7,64 +7,14 @@ import javax.persistence.EntityManager;
 import br.com.treinamento.model.Aluno;
 import br.com.treinamento.model.Unidade;
 
-public class AlunoDao {
+public class AlunoDao extends DAO<Aluno>{
 	
 	private EntityManager em;
 	
 	
 	public AlunoDao(EntityManager em) {
+		super(em);
 		this.em = em;
-	}
-	
-	
-	
-	public void save(Aluno aluno) {
-		
-		try {
-			
-			em.getTransaction().begin();
-			if(aluno.getId() != null) {
-				em.persist(aluno);
-				System.out.println("Atualizado com Sucesso");
-			}else {
-				em.persist(aluno);
-				System.out.println("Salvo com sucesso!");
-			}
-			
-			em.getTransaction().commit();
-			
-		}catch (Exception e) {
-			System.out.println("Erro ao Salvar");
-		}
-		
-	}
-	
-	public void remove(Aluno aluno) {
-		
-		try {
-			em.getTransaction().begin();
-			em.merge(aluno);
-			em.remove(aluno);
-			em.getTransaction().commit();
-			
-		}catch (Exception e) {
-			System.out.println("Erro ao Remover");
-		}
-
-	}
-	
-	
-	public List<Aluno> findAll() {
-		String jpql = "SELECT a FROM Aluno a";
-		return em.createQuery(jpql, Aluno.class).getResultList();
-	}
-	
-	
-	public Aluno findById(Long id) {
-		
-		String jpql = "SELECT a FROM Aluno a WHERE a.id = :id";
-		return em.createQuery(jpql, Aluno.class).setParameter("id", id).getSingleResult();
-		
 	}
 	
 	

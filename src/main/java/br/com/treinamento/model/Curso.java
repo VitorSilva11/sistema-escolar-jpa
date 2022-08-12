@@ -24,9 +24,10 @@ public class Curso {
 	@Column(name = "qtd_horas_a_fazer")
 	private Integer qtdHorasAFazer;
 	
+	
+	
 	@ManyToMany(mappedBy = "cursos")
 	private List<Unidade> unidades;
-	
 	
 	@OneToMany(mappedBy = "curso", cascade = CascadeType.PERSIST)
 	private List<Periodo> periodos;

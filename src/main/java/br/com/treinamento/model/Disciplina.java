@@ -24,6 +24,7 @@ public class Disciplina {
 	
 	
 	
+	
 	public Disciplina() {}
 
 	public Disciplina(String nome) {
@@ -52,6 +53,11 @@ public class Disciplina {
 
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
+	}
+
+	@Override
+	public String toString() {
+		return "Disciplina [nome=" + nome + "]";
 	}
 
 

@@ -80,6 +80,12 @@ public class Empresa {
 	public void setUnidades(List<Unidade> unidades) {
 		this.unidades = unidades;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Empresa [nome=" + nome + ", cnpj=" + cnpj + ", email=" + email + "]";
+	}
 	
 	
 

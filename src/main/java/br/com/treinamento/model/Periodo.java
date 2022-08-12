@@ -28,6 +28,8 @@ public class Periodo {
 	
 	@OneToMany(mappedBy = "periodo")
 	private List<Disciplina> disciplinas;
+
+    
 	
 	
 	public Periodo() {}
